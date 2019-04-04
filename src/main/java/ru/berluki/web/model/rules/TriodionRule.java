@@ -1,26 +1,16 @@
 package ru.berluki.web.model.rules;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 
+@Data
 @Entity
 public class TriodionRule extends DayRule {
-    private int DaysFromEaster;
 
-    private boolean isTransparent;
+    private int daysFromEaster;
 
-    public int getDaysFromEaster() {
-        return DaysFromEaster;
-    }
-
-    public void setDaysFromEaster(int daysFromEaster) {
-        DaysFromEaster = daysFromEaster;
-    }
-
-    public boolean isTransparent() {
-        return isTransparent;
-    }
-
-    public void setTransparent(boolean transparent) {
-        isTransparent = transparent;
-    }
+    //    @Column(columnDefinition = "BIT", length = 1)
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private byte isTransparent;
 }

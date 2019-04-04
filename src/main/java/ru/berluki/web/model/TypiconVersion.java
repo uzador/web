@@ -4,10 +4,11 @@ import lombok.Data;
 import ru.berluki.web.model.rules.TriodionRule;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Data
+@Data
 @Entity
 public class TypiconVersion {
 
@@ -17,10 +18,21 @@ public class TypiconVersion {
 
     private String defaultLanguage;
 
+    private byte isModified;
+
+    @Column(name = "CDAte")
+    private LocalDateTime cdate;
+
+    @Column(name = "BDAte")
+    private LocalDateTime bdate;
+
+    @Column(name = "EDAte")
+    private LocalDateTime edate;
+
 //    @OneToMany(mappedBy = "typiconVersion", fetch = FetchType.LAZY)
 //    private List<Kathisma> kathismas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "typiconVersion"/*, fetch = FetchType.LAZY*/)
+    @OneToMany(mappedBy = "typiconVersion")
     private List<TriodionRule> triodionRules = new ArrayList<>();
 
     public int getId() {
@@ -38,14 +50,6 @@ public class TypiconVersion {
     public void setDefaultLanguage(String defaultLanguage) {
         this.defaultLanguage = defaultLanguage;
     }
-
-//    public List<Kathisma> getKathismas() {
-//        return kathismas;
-//    }
-
-//    public void setKathismas(List<Kathisma> kathismas) {
-//        this.kathismas = kathismas;
-//    }
 
     public List<TriodionRule> getTriodionRules() {
         return triodionRules;
