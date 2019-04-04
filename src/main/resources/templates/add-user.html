@@ -19,9 +19,9 @@
             <form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label for="name" class="col-form-label">Name</label>
-                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
-                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                        <label for="userName" class="col-form-label">UserName</label>
+                        <input type="text" th:field="*{userName}" class="form-control" id="userName" placeholder="UserName">
+                        <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="login" class="col-form-label">Login</label>
@@ -29,9 +29,24 @@
                         <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password" class="col-form-label">Password</label>
-                        <input type="text" th:field="*{password}" class="form-control" id="password" placeholder="Password">
-                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
+                        <label for="passwordHash" class="col-form-label">PasswordHash</label>
+                        <input type="text" th:field="*{passwordHash}" class="form-control" id="passwordHash" placeholder="PasswordHash">
+                        <span th:if="${#fields.hasErrors('passwordHash')}" th:errors="*{passwordHash}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email" class="col-form-label">Email</label>
+                        <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="emailConfirmed" class="col-form-label">EmailConfirmed</label>
+                        <input type="text" th:field="*{emailConfirmed}" class="form-control" id="emailConfirmed" placeholder="EmailConfirmed">
+                        <span th:if="${#fields.hasErrors('emailConfirmed')}" th:errors="*{emailConfirmed}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="twoFactorEnabled" class="col-form-label">TwoFactorEnabled</label>
+                        <input type="text" th:field="*{twoFactorEnabled}" class="form-control" id="twoFactorEnabled" placeholder="TwoFactorEnabled">
+                        <span th:if="${#fields.hasErrors('twoFactorEnabled')}" th:errors="*{twoFactorEnabled}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="isAdministrator" class="col-form-label">IsAdministrator</label>

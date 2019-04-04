@@ -20,7 +20,7 @@ public class TypiconVersion {
 //    @OneToMany(mappedBy = "typiconVersion", fetch = FetchType.LAZY)
 //    private List<Kathisma> kathismas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "typiconVersion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "typiconVersion"/*, fetch = FetchType.LAZY*/)
     private List<TriodionRule> triodionRules = new ArrayList<>();
 
     public int getId() {

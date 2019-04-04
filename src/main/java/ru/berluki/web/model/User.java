@@ -12,11 +12,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String name;
+    private String userName;
 
     private String login;
 
-    private String password;
+    private String passwordHash;
+
+    private String email;
+
+    private byte emailConfirmed;
+
+    private byte twoFactorEnabled;
 
     private byte isAdministrator;
 

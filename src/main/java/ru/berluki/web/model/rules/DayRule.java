@@ -13,8 +13,8 @@ public abstract class DayRule extends TypiconRule {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "typiconVersion_id", insertable = false, updatable = false)
+    @ManyToOne/*(fetch = FetchType.LAZY)*/
+    @JoinColumn(name = "typiconVersionId", insertable = false, updatable = false)
     protected TypiconVersion typiconVersion;
 
     public int getId() {
