@@ -18,11 +18,26 @@
         <div class="col-md-6">
             <form action="#" th:action="@{/triodionrule/add}" th:object="${triodionrule}" method="post">
                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="daysFromEaster" class="col-form-label">DaysFromEaster</label>
-                        <input type="text" th:field="*{daysFromEaster}" class="form-control" id="daysFromEaster" placeholder="DaysFromEaster">
-                        <span th:if="${#fields.hasErrors('daysFromEaster')}" th:errors="*{daysFromEaster}" class="text-danger"></span>
-                    </div>
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label for="ruleDefinition" class="col-form-label">RuleDefinition</label>-->
+                        <!--<input type="text" th:field="*{ruleDefinition}" class="form-control" id="ruleDefinition" placeholder="RuleDefinition">-->
+                        <!--<span th:if="${#fields.hasErrors('ruleDefinition')}" th:errors="*{ruleDefinition}" class="text-danger"></span>-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label for="modRuleDefinition" class="col-form-label">ModRuleDefinition</label>-->
+                        <!--<input type="text" th:field="*{modRuleDefinition}" class="form-control" id="modRuleDefinition" placeholder="ModRuleDefinition">-->
+                        <!--<span th:if="${#fields.hasErrors('modRuleDefinition')}" th:errors="*{modRuleDefinition}" class="text-danger"></span>-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label for="isAddition" class="col-form-label">IsAddition</label>-->
+                        <!--<input type="text" th:field="*{isAddition}" class="form-control" id="isAddition" placeholder="IsAddition">-->
+                        <!--<span th:if="${#fields.hasErrors('isAddition')}" th:errors="*{isAddition}" class="text-danger"></span>-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label for="daysFromEaster" class="col-form-label">DaysFromEaster</label>-->
+                        <!--<input type="text" th:field="*{daysFromEaster}" class="form-control" id="daysFromEaster" placeholder="DaysFromEaster">-->
+                        <!--<span th:if="${#fields.hasErrors('daysFromEaster')}" th:errors="*{daysFromEaster}" class="text-danger"></span>-->
+                    <!--</div>-->
                     <div class="form-group col-md-6">
                         <label for="isTransparent" class="col-form-label">IsTransparent</label>
                         <input type="text" th:field="*{isTransparent}" class="form-control" id="isTransparent" placeholder="IsTransparent">

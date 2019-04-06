@@ -22,10 +22,11 @@
                     <thead>
                     <tr>
                         <th>TypiconVersion</th>
+                        <th>RuleDefinition</th>
+                        <th>ModRuleDefinition</th>
+                        <th>IsAddition</th>
                         <th>DaysFromEaster</th>
                         <th>IsTransparent</th>
-                        <!--<th>TemplateId</th>-->
-                        <!--<th>IsAddition</th>-->
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -33,10 +34,11 @@
                     <tbody>
                     <tr th:each="triodionrule : ${triodionrules}">
                         <td th:text="${triodionrule.typiconVersion.id}"></td>
+                        <td th:text="${triodionrule.ruleDefinition}"></td>
+                        <td th:text="${triodionrule.modRuleDefinition}"></td>
+                        <td th:text="${triodionrule.isAddition}"></td>
                         <td th:text="${triodionrule.daysFromEaster}"></td>
                         <td th:text="${triodionrule.isTransparent}"></td>
-                        <!--<td th:text="${triodionrule.templateId}"></td>-->
-                        <!--<td th:text="${triodionrule.isAddition}"></td>-->
                         <td><a th:href="@{/triodionrule/edit/{id}(id=${triodionrule.id})}" class="btn btn-primary"><i
                                 class="fas fa-user-edit ml-2"></i></a></td>
                         <td><a th:href="@{/triodionrule/delete/{id}(id=${triodionrule.id})}" class="btn btn-primary"><i

@@ -20,13 +20,13 @@ public class TypiconVersion {
 
     private byte isModified;
 
-    @Column(name = "CDAte")
+    @Column(name = "CDate")
     private LocalDateTime cdate;
 
-    @Column(name = "BDAte")
+    @Column(name = "BDate")
     private LocalDateTime bdate;
 
-    @Column(name = "EDAte")
+    @Column(name = "EDate")
     private LocalDateTime edate;
 
 //    @OneToMany(mappedBy = "typiconVersion", fetch = FetchType.LAZY)

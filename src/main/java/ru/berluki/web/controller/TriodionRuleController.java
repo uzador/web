@@ -27,8 +27,6 @@ public class TriodionRuleController {
     @GetMapping("/triodionrule")
     public String loadUsers(Model model) {
         final List<TriodionRule> rules = triodionRepo.findAll();
-        final TriodionRule rule = rules.get(0);
-        final TypiconVersion version = rule.getTypiconVersion();
         model.addAttribute("triodionrules", triodionRepo.findAll());
         return "index-triodionrule";
     }
@@ -41,29 +39,7 @@ public class TriodionRuleController {
     @PostMapping("/triodionrule/add")
     public String addTriodionRule(@Valid TriodionRule triodionRule, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-triodionRule";
-        }
-
-        triodionRepo.save(triodionRule);
-        model.addAttribute("triodionRules", triodionRepo.findAll());
-        return "index-triodionrule";
-    }
-
-    @GetMapping("/triodionRule/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        final TriodionRule user = triodionRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid triodionRule Id:" + id));
-
-        model.addAttribute("triodionRule", user);
-        return "update-triodionRule";
-    }
-
-    @PostMapping("/triodionRule/update/{id}")
-    public String updateUser(@PathVariable("id") int id, @Valid TriodionRule triodionRule,
-                             BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            triodionRule.setId(id);
-            return "update-triodionRule";
+            return "add-triodionrule";
         }
 
         triodionRepo.save(triodionRule);
@@ -71,7 +47,29 @@ public class TriodionRuleController {
         return "index-triodionrule";
     }
 
-    @GetMapping("/triodionRule/delete/{id}")
+    @GetMapping("/triodionrule/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+        final TriodionRule user = triodionRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid triodionRule Id:" + id));
+
+        model.addAttribute("triodionrule", user);
+        return "update-triodionrule";
+    }
+
+    @PostMapping("/triodionrule/update/{id}")
+    public String updateUser(@PathVariable("id") int id, @Valid TriodionRule triodionRule,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            triodionRule.setId(id);
+            return "update-triodionrule";
+        }
+
+        triodionRepo.save(triodionRule);
+        model.addAttribute("triodionrules", triodionRepo.findAll());
+        return "index-triodionrule";
+    }
+
+    @GetMapping("/triodionrule/delete/{id}")
     public String deleteUser(@PathVariable("id") int id, Model model) {
         final TriodionRule triodionRule = triodionRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid triodionrule Id:" + id));
