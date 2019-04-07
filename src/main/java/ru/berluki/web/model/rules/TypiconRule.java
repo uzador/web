@@ -1,19 +1,23 @@
 package ru.berluki.web.model.rules;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class TypiconRule extends ModRuleEntity {
 
-    protected int templateId;
+    @ManyToOne
+    @JoinColumn(name = "templateId")
+    protected Sign templateId;
 
     protected byte isAddition;
 
-    public int getTemplateId() {
+    public Sign getTemplateId() {
         return templateId;
     }
 
-    public void setTemplateId(int templateId) {
+    public void setTemplateId(Sign templateId) {
         this.templateId = templateId;
     }
 

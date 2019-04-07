@@ -20,16 +20,13 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="typiconVersion" class="col-form-label">TypiconVersion</label>
-
                         <select th:field="*{typiconVersion}" class="form-control" id="typiconVersion" placeholder="TypiconVersion">
-                            <option th:each="var : ${typiconversions}"
-                                    th:value="${var.id}"
-                                    th:text="${var}">TypiconVersion</option>
+                            <option th:each="version : ${typiconversions}"
+                                    th:value="${version.id}"
+                                    th:text="${version}">TypiconVersion</option>
                         </select>
-
                         <span th:if="${#fields.hasErrors('typiconVersion')}" th:errors="*{typiconVersion}" class="text-danger"></span>
                     </div>
-
                     <div class="form-group col-md-6">
                         <label for="ruleDefinition" class="col-form-label">RuleDefinition</label>
                         <input type="text" th:field="*{ruleDefinition}" class="form-control" id="ruleDefinition" placeholder="RuleDefinition">
@@ -39,6 +36,17 @@
                         <label for="modRuleDefinition" class="col-form-label">ModRuleDefinition</label>
                         <input type="text" th:field="*{modRuleDefinition}" class="form-control" id="modRuleDefinition" placeholder="ModRuleDefinition">
                         <span th:if="${#fields.hasErrors('modRuleDefinition')}" th:errors="*{modRuleDefinition}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="templateId" class="col-form-label">TemplateId</label>
+
+                        <select th:field="*{templateId}" class="form-control" id="templateId" placeholder="TemplateId">
+                            <option th:each="sign : ${signs}"
+                                    th:value="${sign.id}"
+                                    th:text="${sign}">Sign</option>
+                        </select>
+
+                        <span th:if="${#fields.hasErrors('templateId')}" th:errors="*{templateId}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="isAddition" class="col-form-label">IsAddition</label>

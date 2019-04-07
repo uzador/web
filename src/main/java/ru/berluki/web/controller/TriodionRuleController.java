@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.berluki.web.model.rules.TriodionRule;
+import ru.berluki.web.repository.SignRepo;
 import ru.berluki.web.repository.TriodionRuleRepo;
 import ru.berluki.web.repository.TypiconVersionRepo;
 
@@ -18,16 +19,19 @@ public class TriodionRuleController {
 
     private final TriodionRuleRepo triodionRepo;
     private final TypiconVersionRepo typiconVersionRepo;
+    private final SignRepo signRepo;
 
     @Autowired
     public TriodionRuleController(TriodionRuleRepo triodionRepo,
-                                  TypiconVersionRepo typiconVersionRepo) {
+                                  TypiconVersionRepo typiconVersionRepo,
+                                  SignRepo signRepo) {
         this.triodionRepo = triodionRepo;
         this.typiconVersionRepo = typiconVersionRepo;
+        this.signRepo = signRepo;
     }
 
     @GetMapping("/triodionrule")
-    public String loadUsers(Model model) {
+    public String loadTriodionRules(Model model) {
         model.addAttribute("triodionrules", triodionRepo.findAll());
         return "triodionrule/index-triodionrule";
     }
@@ -35,6 +39,7 @@ public class TriodionRuleController {
     @GetMapping("/triodionrule/signup")
     public String showSignUpForm(TriodionRule triodionRule, Model model) {
         model.addAttribute("typiconversions", typiconVersionRepo.findAll());
+        model.addAttribute("signs", signRepo.findAll());
         return "triodionrule/add-triodionrule";
     }
 
@@ -55,6 +60,8 @@ public class TriodionRuleController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid triodionrule Id:" + id));
 
         model.addAttribute("triodionrule", triodionRule);
+        model.addAttribute("typiconversions", typiconVersionRepo.findAll());
+        model.addAttribute("signs", signRepo.findAll());
         return "triodionrule/update-triodionrule";
     }
 

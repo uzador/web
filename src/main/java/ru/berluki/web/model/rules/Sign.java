@@ -44,4 +44,13 @@ public class Sign extends ModRuleEntity {
     public void setIsTemplate(byte isTemplate) {
         this.isTemplate = isTemplate;
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", isAddition=" + isAddition +
+                ", number=" + number +
+                ", priority=" + priority +
+                ", isTemplate=" + isTemplate;
+    }
 }
