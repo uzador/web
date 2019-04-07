@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add TriodionRule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="mb-5">New TriodionRule</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/triodionrule/add}" th:object="${triodionRule}" method="post">
+                <div class="row">
+                    <!--<div class="form-group col-md-6">-->
+                        <!--<label for="typiconVersion" class="col-form-label">TypiconVersion</label>-->
+                        <!--<input type="text" th:field="*{typiconVersion}" class="form-control" id="typiconVersion" placeholder="TypiconVersion">-->
+                        <!--<span th:if="${#fields.hasErrors('typiconVersion')}" th:errors="*{typiconVersion}" class="text-danger"></span>-->
+                    <!--</div>-->
+
+                    <div class="form-group col-md-6">
+                        <label for="typiconVersion" class="col-form-label">TypiconVersion</label>
+
+                        <select th:field="*{typiconVersion}" class="form-control" id="typiconVersion" placeholder="TypiconVersion">
+                            <option th:each="var : ${typiconversions}"
+                                    th:value="${var.id}"
+                                    th:text="${var}">TypiconVersion</option>
+                        </select>
+
+                        <span th:if="${#fields.hasErrors('typiconVersion')}" th:errors="*{typiconVersion}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="ruleDefinition" class="col-form-label">RuleDefinition</label>
+                        <input type="text" th:field="*{ruleDefinition}" class="form-control" id="ruleDefinition" placeholder="RuleDefinition">
+                        <span th:if="${#fields.hasErrors('ruleDefinition')}" th:errors="*{ruleDefinition}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="modRuleDefinition" class="col-form-label">ModRuleDefinition</label>
+                        <input type="text" th:field="*{modRuleDefinition}" class="form-control" id="modRuleDefinition" placeholder="ModRuleDefinition">
+                        <span th:if="${#fields.hasErrors('modRuleDefinition')}" th:errors="*{modRuleDefinition}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="isAddition" class="col-form-label">IsAddition</label>
+                        <input type="text" th:field="*{isAddition}" class="form-control" id="isAddition" placeholder="IsAddition">
+                        <span th:if="${#fields.hasErrors('isAddition')}" th:errors="*{isAddition}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="daysFromEaster" class="col-form-label">DaysFromEaster</label>
+                        <input type="text" th:field="*{daysFromEaster}" class="form-control" id="daysFromEaster" placeholder="DaysFromEaster">
+                        <span th:if="${#fields.hasErrors('daysFromEaster')}" th:errors="*{daysFromEaster}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="isTransparent" class="col-form-label">IsTransparent</label>
+                        <input type="text" th:field="*{isTransparent}" class="form-control" id="isTransparent" placeholder="IsTransparent">
+                        <span th:if="${#fields.hasErrors('isTransparent')}" th:errors="*{isTransparent}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Add TriodionRule">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

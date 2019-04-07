@@ -22,16 +22,24 @@
                     <thead>
                     <tr>
                         <th>DefaultLanguage</th>
+                        <th>IsModified</th>
+                        <th>CDate</th>
+                        <th>BDate</th>
+                        <th>EDate</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="typiconversion : ${typiconversions}">
                         <td th:text="${typiconversion.defaultLanguage}"></td>
+                        <td th:text="${typiconversion.isModified}"></td>
+                        <td th:text="${typiconversion.cdate}"></td>
+                        <td th:text="${typiconversion.bdate}"></td>
+                        <td th:text="${typiconversion.edate}"></td>
                         <!--<td th:text="${typiconversion.kathismas}"></td>-->
-                        <tr th:each="kathisma : ${typiconversion.kathismas}">
-                            <td><span th:text="${kathisma.number}">Number</span></td>
+                        <!--<tr th:each="kathisma : ${typiconversion.kathismas}">-->
+                            <!--<td><span th:text="${kathisma.number}">Number</span></td>-->
                             <!--<td><span th:text="${kathisma.typiconVersion}">TypiconVersion</span></td>-->
-                        </tr>
+                        <!--</tr>-->
 
                         <td><a th:href="@{/typiconversion/edit/{id}(id=${typiconversion.id})}" class="btn btn-primary"><i
                                 class="fas fa-user-edit ml-2"></i></a></td>

@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.berluki.web.model.User;
-import ru.berluki.web.repository.UserRepository;
+import ru.berluki.web.repository.UserRepo;
 
 import javax.validation.Valid;
 
 @Controller
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserRepo userRepo;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserRepo userRepo) {
+        this.userRepo = userRepo;
     }
 
     @GetMapping("/user")
     public String loadUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userRepo.findAll());
         return "index-user";
     }
 
@@ -39,14 +39,14 @@ public class UserController {
             return "add-user";
         }
 
-        userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        userRepo.save(user);
+        model.addAttribute("users", userRepo.findAll());
         return "index-user";
     }
 
     @GetMapping("/user/edit/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        final User user = userRepository.findById(id)
+        final User user = userRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
         model.addAttribute("user", user);
@@ -61,17 +61,17 @@ public class UserController {
             return "update-user";
         }
 
-        userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        userRepo.save(user);
+        model.addAttribute("users", userRepo.findAll());
         return "index-user";
     }
 
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") int id, Model model) {
-        final User user = userRepository.findById(id)
+        final User user = userRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        userRepository.delete(user);
-        model.addAttribute("users", userRepository.findAll());
+        userRepo.delete(user);
+        model.addAttribute("users", userRepo.findAll());
         return "index-user";
     }
 }

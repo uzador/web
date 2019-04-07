@@ -12,7 +12,7 @@ public abstract class RuleEntity {
     protected int id;
 
     @ManyToOne
-    @JoinColumn(name = "typiconVersionId", insertable = false, updatable = false)
+    @JoinColumn(name = "typiconVersionId")
     protected TypiconVersion typiconVersion;
 
     protected String ruleDefinition;

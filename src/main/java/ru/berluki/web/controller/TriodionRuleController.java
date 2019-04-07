@@ -7,53 +7,55 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.berluki.web.model.TypiconVersion;
 import ru.berluki.web.model.rules.TriodionRule;
-import ru.berluki.web.repository.TriodionRuleRepository;
+import ru.berluki.web.repository.TriodionRuleRepo;
+import ru.berluki.web.repository.TypiconVersionRepo;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class TriodionRuleController {
 
-    private final TriodionRuleRepository triodionRepo;
+    private final TriodionRuleRepo triodionRepo;
+    private final TypiconVersionRepo typiconVersionRepo;
 
     @Autowired
-    public TriodionRuleController(TriodionRuleRepository triodionRepo) {
+    public TriodionRuleController(TriodionRuleRepo triodionRepo,
+                                  TypiconVersionRepo typiconVersionRepo) {
         this.triodionRepo = triodionRepo;
+        this.typiconVersionRepo = typiconVersionRepo;
     }
 
     @GetMapping("/triodionrule")
     public String loadUsers(Model model) {
-        final List<TriodionRule> rules = triodionRepo.findAll();
         model.addAttribute("triodionrules", triodionRepo.findAll());
-        return "index-triodionrule";
+        return "triodionrule/index-triodionrule";
     }
 
     @GetMapping("/triodionrule/signup")
-    public String showSignUpForm(TriodionRule triodionRule) {
-        return "add-triodionrule";
+    public String showSignUpForm(TriodionRule triodionRule, Model model) {
+        model.addAttribute("typiconversions", typiconVersionRepo.findAll());
+        return "triodionrule/add-triodionrule";
     }
 
     @PostMapping("/triodionrule/add")
     public String addTriodionRule(@Valid TriodionRule triodionRule, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-triodionrule";
+            return "triodionrule/add-triodionrule";
         }
 
         triodionRepo.save(triodionRule);
         model.addAttribute("triodionrules", triodionRepo.findAll());
-        return "index-triodionrule";
+        return "triodionrule/index-triodionrule";
     }
 
     @GetMapping("/triodionrule/edit/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        final TriodionRule user = triodionRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid triodionRule Id:" + id));
+        final TriodionRule triodionRule = triodionRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid triodionrule Id:" + id));
 
-        model.addAttribute("triodionrule", user);
-        return "update-triodionrule";
+        model.addAttribute("triodionrule", triodionRule);
+        return "triodionrule/update-triodionrule";
     }
 
     @PostMapping("/triodionrule/update/{id}")
@@ -61,12 +63,12 @@ public class TriodionRuleController {
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             triodionRule.setId(id);
-            return "update-triodionrule";
+            return "triodionrule/update-triodionrule";
         }
 
         triodionRepo.save(triodionRule);
         model.addAttribute("triodionrules", triodionRepo.findAll());
-        return "index-triodionrule";
+        return "triodionrule/index-triodionrule";
     }
 
     @GetMapping("/triodionrule/delete/{id}")
@@ -75,6 +77,6 @@ public class TriodionRuleController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid triodionrule Id:" + id));
         triodionRepo.delete(triodionRule);
         model.addAttribute("triodionrules", triodionRepo.findAll());
-        return "index-triodionrule";
+        return "triodionrule/index-triodionrule";
     }
 }

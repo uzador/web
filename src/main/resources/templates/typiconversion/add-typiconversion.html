@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add TypiconVersion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="mb-5">New TypiconVersion</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/typiconversion/add}" th:object="${typiconVersion}" method="post">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="defaultLanguage" class="col-form-label">DefaultLanguage</label>
+                        <input type="text" th:field="*{defaultLanguage}" class="form-control" id="defaultLanguage" placeholder="DefaultLanguage">
+                        <span th:if="${#fields.hasErrors('defaultLanguage')}" th:errors="*{defaultLanguage}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="isModified" class="col-form-label">IsModified</label>
+                        <input type="text" th:field="*{isModified}" class="form-control" id="isModified" placeholder="IsModified">
+                        <span th:if="${#fields.hasErrors('isModified')}" th:errors="*{isModified}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="cdate" class="col-form-label">CDate</label>
+                        <input type="datetime-local" th:field="*{cdate}" class="form-control" id="cdate" placeholder="CDate">
+                        <span th:if="${#fields.hasErrors('cdate')}" th:errors="*{cdate}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="bdate" class="col-form-label">BDate</label>
+                        <input type="datetime-local" th:field="*{bdate}" class="form-control" id="bdate" placeholder="BDate">
+                        <span th:if="${#fields.hasErrors('bdate')}" th:errors="*{bdate}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="edate" class="col-form-label">EDate</label>
+                        <input type="datetime-local" th:field="*{edate}" class="form-control" id="edate" placeholder="EDate">
+                        <span th:if="${#fields.hasErrors('edate')}" th:errors="*{edate}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Add TypiconVersion">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
